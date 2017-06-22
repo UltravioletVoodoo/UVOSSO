@@ -1,0 +1,21 @@
+{
+  "name": "uvosso",
+  "description": "Web app designed to help UVic students keep track of their deadlines",
+  "main": "index.js",
+  "author": "Jonathan Bezeau",
+  "moduleType": [
+    "amd"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "^2.1.16"
+  }
+}

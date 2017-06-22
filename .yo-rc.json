@@ -1,0 +1,14 @@
+{
+  "generator-kraken": {
+    "taskModule": "grunt",
+    "lintModule": "eslint",
+    "description": "Web app designed to help UVic students keep track of their deadlines",
+    "author": "Jonathan Bezeau",
+    "templateModule": "makara",
+    "i18n": "i18n",
+    "componentPackager": "bower",
+    "cssModule": "sass",
+    "jsModule": "requirejs",
+    "useJson": null
+  }
+}
