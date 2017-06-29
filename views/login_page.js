@@ -1,11 +1,17 @@
 module.exports = context =>
-`<div>
-    <h1>Hello! Welcome to the login page!</h1>
+`<h1>Hello! Welcome to the login page!</h1>
 
-    <form action="/action_page.php">
-        User Name: <input type="text" name="Uname"><br>
-        Password: <input type="text" name="Pass"><br>
-        <input type="submit" value="Submit">
-    </form>
-</div>
+<form action="/login_handler" method="post">
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="user_email">
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="user_password">
+    </div>
+    <div class="button">
+        <button type="submit">Submit</button>
+    </div>
+</form>
 `;
