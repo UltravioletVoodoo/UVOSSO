@@ -20,8 +20,17 @@ console.log(
 
 //Load Express
 const express = require('express')
+//Load mongoose
+const mongoose = require('mongoose')
 
+//set up things
 const app = express()
+
+//set up database things
+const mongoDB = 'mongodb://UVOSSO_Admin:guenhwyvar@ds149382.mlab.com:49382/uvosso';
+mongoose.connect(mongoDB);
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error'));
 
 // Views
 const base = require('./views/base');

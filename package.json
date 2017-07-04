@@ -4,7 +4,8 @@
   "description": "Web app I made to fulfil my 1st Co-op requirement",
   "main": "app.js",
   "dependencies": {
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "mongoose": "^4.10.8"
   },
   "devDependencies": {},
   "scripts": {
