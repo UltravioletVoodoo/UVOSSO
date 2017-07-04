@@ -10,6 +10,7 @@ const UserSchema = Schema(
 );
 
 //Virtual for User's URL
+UserSchema
 .virtual('url')
 .get(function () {
     return '/users/User/' + this._id;

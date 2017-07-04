@@ -37,11 +37,16 @@ const base = require('./views/base');
 const error = require('./views/error');
 const login_page = require('./views/login_page');
 
+//Routes
+const index = require('./routes/index');
+const users = require('./routes/users');
+
+app.use('/users', users);
 
 app.use(express.static('public'));
 
 //Redirects the initial page to the login page
-app.get('/', (req, res) => res.redirect('/login_page'));
+app.use('/', index);
 
 //Loads the login page
 app.get('/login_page', (req, res) =>
