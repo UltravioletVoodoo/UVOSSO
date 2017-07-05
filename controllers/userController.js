@@ -1,4 +1,4 @@
-var User = require('../models/user');
+const User = require('../models/user');
 
 //This is where I put functions to handle things... i think
 
