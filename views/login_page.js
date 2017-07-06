@@ -1,7 +1,7 @@
 module.exports = context =>
 `<h1>Hello! Welcome to the login page!</h1>
 
-<form action="/catalog/main_page" method="post">
+<form action="../controllers/userController" method="post">
     <div>
         <label for="email">Email:</label>
         <input type="email" id="email" name="user_email">
