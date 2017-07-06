@@ -8,6 +8,7 @@ const userController = require('../controllers/userController');
 const base = require('../views/base');
 const error = require('../views/error.js');
 const login_page = require('../views/login_page');
+const main_page = require('../views/main_page');
 
 // ROUTES BEGIN HERE //
 
