@@ -1,16 +1,16 @@
-module.exports = (context={}) =>
-`<!DOCTYPE html>
-<html>
+module.exports = function(context) {
+  return `
+  <!DOCTYPE html>
+  <html>
     <head>
-        <script src="/jquery.js"></script>
+        <title>${context.title}</title>
+
+        <link href='/stylesheets/style.css' rel='stylesheet'></link>
     </head>
 
     <body>
-
-        <!-- Content -->
-        <div class="${context.class}" id="content">
-            ${context.content}
-        </div>
-
+        ${context.content}
     </body>
-</html>`;
+  </html>
+  `
+}
