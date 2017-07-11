@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -12,6 +13,12 @@ var app = express();
 
 //Views
 const errorView = require('./views/error');
+
+//Set up the database stuff
+mongoose.connect('mongodb://UVOSSO_Admin:guenhwyvar@ds149382.mlab.com:49382/uvosso');
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error: '));
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
