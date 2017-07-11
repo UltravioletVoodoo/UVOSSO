@@ -21,19 +21,29 @@ module.exports.createUser = function(req, res) {
     //step 1: passwords the same
     if(password1 !== password2){
         //run some error
-        res.send('Passwords did not match');
+        res.send(registerPage({
+            error: 'Your passwords didn\'t match dummy',
+        }));
         return;
     }
 
     //step 2: email is actually an email
     if(!(emailValidator.validate(email))){
         //run some error
+        res.send(registerPage({
+            error: 'Your email is not in a valid format',
+        }));
+        return;
     }
 
     //step 3: User doesnt already exist
     userExists(email).then(function(exists) {
         if(exists) {
             // run some error
+            res.send(registerPage({
+                error: 'email is already registered with another account',
+            }));
+            return;
         }
     
         // save the stuff
