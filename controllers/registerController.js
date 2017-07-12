@@ -1,6 +1,9 @@
 const emailValidator = require('email-validator');
 
 const registerPage = require('../views/registerPage');
+
+const list = require('../views/util/list');
+
 const userModel = require('../models/userModel');
 
 //Loading the register page
@@ -18,34 +21,35 @@ module.exports.createUser = function(req, res) {
     const password2 = req.sanitize('password2').escape();
     //validate the shit
 
+    //allowing us to list all errors at once
+    var errors = [];
+
+
     //step 1: passwords the same
     if(password1 !== password2){
         //run some error
-        res.send(registerPage({
-            error: 'Your passwords didn\'t match dummy',
-        }));
-        return;
+        errors.push('Your passwords didn\'t match');
     }
 
     //step 2: email is actually an email
     if(!(emailValidator.validate(email))){
         //run some error
-        res.send(registerPage({
-            error: 'Your email is not in a valid format',
-        }));
-        return;
+        errors.push('Your email is not in a valid format');
     }
 
     //step 3: User doesnt already exist
     userExists(email).then(function(exists) {
         if(exists) {
             // run some error
-            res.send(registerPage({
-                error: 'email is already registered with another account',
-            }));
-            return;
+            errors.push('Email address is already registered with another account');
         }
-    
+        
+        //Pop-up error messages
+        if (errors.length > 0){
+            res.send(registerPage({
+                error: list(errors),
+            }));
+        }
         // save the stuff
     
     });

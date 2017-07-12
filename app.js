@@ -18,6 +18,7 @@ var app = express();
 const errorView = require('./views/error');
 
 //Set up the database stuff
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://UVOSSO_Admin:guenhwyvar@ds149382.mlab.com:49382/uvosso');
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
