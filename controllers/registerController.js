@@ -1,6 +1,7 @@
 const emailValidator = require('email-validator');
 
 const registerPage = require('../views/registerPage');
+const errorView = require('../views/error');
 
 const list = require('../views/util/list');
 
@@ -35,13 +36,19 @@ module.exports.createUser = function(req, res) {
         errors.push('Your passwords didn\'t match');
     }
 
-    //step 2: email is actually an email
+    //step 2: passwords are not more than 20 characters long
+    if(password1.length > 20){
+        //push error to the error list
+        errors.push('Your password is too long. Maximum length is 20 characters');
+    }
+
+    //step 3: email is actually an email
     if(!(emailValidator.validate(email))){
         //run some error
         errors.push('Your email is not in a valid format');
     }
 
-    //step 3: User doesnt already exist
+    //step 4: User doesnt already exist
     userModel.userExists({ email : email }, function(exists) {
         if(exists) {
             // run some error
