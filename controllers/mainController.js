@@ -1,5 +1,11 @@
 const mainPage = require("../views/mainPage");
 
 module.exports = function(req, res) {
-    res.send(mainPage());
+
+    if(req.session.email){
+        res.send(mainPage());
+        return;
+    }
+
+    res.redirect('/login');
 };

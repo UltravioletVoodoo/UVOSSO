@@ -8,6 +8,12 @@ const userModel = require('../models/userModel');
 
 //Loading the register page
 module.exports = function(req, res) {
+
+    if(req.session.email){
+        res.redirect('/home');
+        return;
+    }
+
     res.send(registerPage());
 };
 

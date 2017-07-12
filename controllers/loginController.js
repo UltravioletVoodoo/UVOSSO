@@ -4,6 +4,12 @@ const userModel = require('../models/userModel');
 
 //Loading the login page
 module.exports = function(req, res) {
+
+    if(req.session.email){
+        res.redirect('/home');
+        return;
+    }
+
     res.send(loginPage());
 };
 
@@ -22,6 +28,8 @@ module.exports.login = function(req, res) {
             }));
             return;
         }
+
+        req.session.email = email;
 
         res.redirect('/home');
 
