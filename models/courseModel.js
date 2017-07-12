@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 CourseSchema = new Schema( {
     name: {type: String, required: true},
     lectureTime: {type: Array, required: true},
-    deliverable: {type: Objectid, required: true},
+    deliverable: {type: Schema.ObjectId, ref: 'DeliverableModel', required: true},
 });
 
 const courseModel = mongoose.model('CourseModel', CourseSchema);
