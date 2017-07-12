@@ -38,7 +38,8 @@ module.exports.createUser = function(req, res) {
     }
 
     //step 3: User doesnt already exist
-    userExists(email).then(function(exists) {
+    userExists(email, function(exists) {
+        console.log(exists);
         if(exists) {
             // run some error
             errors.push('Email address is already registered with another account');
@@ -49,21 +50,41 @@ module.exports.createUser = function(req, res) {
             res.send(registerPage({
                 error: list(errors),
             }));
+            return;
         }
         // save the stuff
+
+        const user = new userModel({
+            email: email,
+            password: password1,
+        });
+
+        user.save(function (err) {
+            if (err){
+                console.log(err);
+
+                res.send(errorView({
+                    error: err
+                }));
+                return ;
+            }
+
+            //redirect them to the login page
+            res.redirect('/login');
+
+        });
     
     });
 
 };
 
-function userExists(email){
+function userExists(email, cb){
     return userModel.find({
         email: email,
     }).exec(function (error, response){
         console.log(error);
         console.log(response);
 
-        return response && response.length > 0;
-
+        cb(response && response.length > 0);
     });
 }
