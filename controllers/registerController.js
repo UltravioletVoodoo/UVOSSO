@@ -14,12 +14,10 @@ module.exports = function(req, res) {
 //creates a user
 module.exports.createUser = function(req, res) {
 
-    console.log(req.sanitize('email').escape());
-
     const email = req.sanitize('email').escape();
     const password1 = req.sanitize('password1').escape();
     const password2 = req.sanitize('password2').escape();
-    //validate the shit
+    //validate the stuff
 
     //allowing us to list all errors at once
     var errors = [];
@@ -38,7 +36,7 @@ module.exports.createUser = function(req, res) {
     }
 
     //step 3: User doesnt already exist
-    userExists(email, function(exists) {
+    userModel.userExists({ email : email }, function(exists) {
         console.log(exists);
         if(exists) {
             // run some error
@@ -77,14 +75,3 @@ module.exports.createUser = function(req, res) {
     });
 
 };
-
-function userExists(email, cb){
-    return userModel.find({
-        email: email,
-    }).exec(function (error, response){
-        console.log(error);
-        console.log(response);
-
-        cb(response && response.length > 0);
-    });
-}

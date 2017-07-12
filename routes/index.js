@@ -12,6 +12,8 @@ router.get('/', function(req, res, next) {
 
 router.get('/login', loginController);
 
+router.post('/login/login', loginController.login);
+
 /* GET register page */
 router.get('/register', registerController);
 

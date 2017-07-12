@@ -7,4 +7,15 @@ UserSchema = new Schema( {
     password: {type: String, required: true, maxlength: 20}, 
 });
 
-module.exports = mongoose.model('UserModel', UserSchema);
+const userModel = mongoose.model('UserModel', UserSchema);
+module.exports = userModel;
+
+
+module.exports.userExists = function userExists(criteria, cb){
+    return userModel.find(criteria).exec(function (error, response){
+        console.log(error);
+        console.log(response);
+
+        cb(response && response.length > 0);
+    });
+}
