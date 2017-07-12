@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser   = require('body-parser');
 const mongoose     = require('mongoose');
 const validator    = require('express-validator');
+const session      = require('express-session');
 
 //require my routes
 var index = require('./routes/index');
@@ -34,6 +35,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(validator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+    //Secret is a secret! It must remain a secret for my code to be secure!
+    secret: 'zslkmkjz,lcpcjoh9zx,.qphy6hr[3wjn [W3RIOIGH;A\IEHGAYI58',
+    resave: false,
+    saveUninitialized: true,
+}));
 
 
 //Set up routes

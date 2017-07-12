@@ -11,6 +11,7 @@
     "debug": "~2.6.3",
     "email-validator": "^1.0.7",
     "express": "~4.15.2",
+    "express-session": "^1.15.3",
     "express-validator": "^3.2.1",
     "jade": "~1.11.0",
     "mongoose": "^4.10.8",

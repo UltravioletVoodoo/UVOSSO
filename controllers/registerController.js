@@ -37,7 +37,6 @@ module.exports.createUser = function(req, res) {
 
     //step 3: User doesnt already exist
     userModel.userExists({ email : email }, function(exists) {
-        console.log(exists);
         if(exists) {
             // run some error
             errors.push('Email address is already registered with another account');
