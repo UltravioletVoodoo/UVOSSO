@@ -35,4 +35,12 @@ module.exports.login = function(req, res) {
 
 
     });
-}
+};
+
+
+module.exports.logout = function(req, res) {
+
+    delete req.session.email;
+
+    res.redirect('/login');
+};

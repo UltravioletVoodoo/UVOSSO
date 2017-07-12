@@ -6,6 +6,9 @@ module.exports = function(context) {
         content: `
         
         <h1>MAIN PAGE</h1>
+
+        <input type="button" value="Log out" onclick="location.href='/login/logout'">
+
         `
     })
 }

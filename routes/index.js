@@ -11,8 +11,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', loginController);
+router.get('/login/logout', loginController.logout);
 
 router.post('/login/login', loginController.login);
+
+
 
 /* GET register page */
 router.get('/register', registerController);
