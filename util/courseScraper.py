@@ -4,6 +4,7 @@
 #get my imports
 import requests
 from bs4 import BeautifulSoup
+import simplejson as json
 
 #define functions that we will use later
 def reduce_to_name(link):
@@ -82,8 +83,14 @@ for x in course_types_links:
 for x in final_data_list:
     x.numbers = clean_number_list(x.numbers)
 
+
 #test
-for x in final_data_list:
-    print x.name
-    for y in x.numbers:
-        print y
+#for x in final_data_list:
+#    print x.name
+#    for y in x.numbers:
+#        print y
+
+
+json_string = json.load(final_data_list)
+
+print json_string
