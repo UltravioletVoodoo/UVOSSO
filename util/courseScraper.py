@@ -4,7 +4,7 @@
 #get my imports
 import requests
 from bs4 import BeautifulSoup
-import simplejson as json
+import json
 
 #define functions that we will use later
 def reduce_to_name(link):
@@ -41,6 +41,12 @@ class final_data(object):
     def __init__(self, name, numbers):
         self.name = name
         self.numbers = numbers
+
+    def to_json_compat(self):
+        return dict(
+            name = self.name,
+            numbers = self.numbers
+        )
 
 #create the final data list
 final_data_list = []
@@ -90,7 +96,4 @@ for x in final_data_list:
 #    for y in x.numbers:
 #        print y
 
-
-json_string = json.load(final_data_list)
-
-print json_string
+print json.dumps([data.to_json_compat() for data in final_data_list])

@@ -5,6 +5,8 @@ const loginController = require('../controllers/loginController');
 const registerController = require('../controllers/registerController');
 const mainController = require('../controllers/mainController');
 
+const utilController = require('../controllers/utilController');
+
 /* GET login page. */
 router.get('/', function(req, res, next) {
     res.redirect('/login');
@@ -25,6 +27,7 @@ router.post('/register/createUser', registerController.createUser);
 /* GET main page */
 router.get('/home', mainController);
 
-
+/* GET util */
+router.get('/util', utilController);
 
 module.exports = router;
