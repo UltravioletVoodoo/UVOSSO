@@ -5,42 +5,46 @@ module.exports = function(context) {
         title: 'Home',
         content: `
         
+
+        <!DOCTYPE html>
         <h1>MAIN PAGE</h1>
+        <html lang = "en">
+        <head>
 
-        <input type="button" value="Log out" onclick="location.href='/login/logout'">
+            <!-- Top Bar -->
+            <input type="button" value="Log out" onclick="location.href='/login/logout'">
 
-        <pre>
 
-        <!doctype html>
-            <html lang = "en">
-            <head>
-                <meta charset = "utf-8">
-                <title>jQuery UI Autocomplete functionality</title>
-                <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
-                    rel = "stylesheet">
-                <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-                <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-                
-                <!-- Javascript -->
-                <script>
-                    $(function() {
-                        var availableCourses  =  [${context.courses}];
-                        $( "#automplete-1" ).autocomplete({
-                        source: availableCourses
-                        });
+            <meta charset = "utf-8">
+            <title>jQuery UI Autocomplete functionality</title>
+            <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+                rel = "stylesheet">
+            <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+            <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+            
+            <!-- Javascript -->
+            <script>
+                $(function() {
+                    var availableCourses  =  [${context.courses}];
+                    $( "#automplete-1" ).autocomplete({
+                    source: availableCourses
                     });
-                </script>
-            </head>
+                });
+            </script>
+        </head>
             
             <body>
                 <!-- HTML --> 
-                <div class = "ui-widget">
-                    <label for = "automplete-1">Tags: </label>
-                    <input id = "automplete-1">
-                </div>
+
+
+                <!-- ADD COURSE -->
+                <form class ="ui-widget" action"/main/addCourse" method="post">
+                    <label for ="automplete-1">Tags: </label>
+                    <input id ="automplete-1">
+                    <input type="submit" value="add">
+                </form>
             </body>
-            </html>
-        </pre>
+        </html>
 
         `
     })
