@@ -27,6 +27,8 @@ router.post('/register/createUser', registerController.createUser);
 /* GET main page */
 router.get('/home', mainController);
 
+router.post('/home/addCourse', mainController.addCourse);
+
 /* GET util */
 router.get('/util', utilController);
 
