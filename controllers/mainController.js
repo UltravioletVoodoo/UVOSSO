@@ -11,7 +11,7 @@ module.exports = function(req, res) {
             courses = []
 
             for(course in response){
-                courses.push(String(response[course].name));
+                courses.push(String('\"' + response[course].name + '\"'));
             }
 
 

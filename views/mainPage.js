@@ -24,7 +24,7 @@ module.exports = function(context) {
                 <!-- Javascript -->
                 <script>
                     $(function() {
-                        var availableCourses  =  ["${context.courses}"];
+                        var availableCourses  =  [${context.courses}];
                         $( "#automplete-1" ).autocomplete({
                         source: availableCourses
                         });
