@@ -38,8 +38,12 @@ module.exports.addCourse = function(req, res) {
 
     const course = req.sanitize('course').escape();
 
+    var errors = [];
+
     //Make sure that the course isnt already associated with the user
-        //Gonna do this one with eric I think
+    
+
+    
     
     console.log("Attempting to add " + course + " to the user with email: " + req.session.email);
 
@@ -58,9 +62,7 @@ module.exports.addCourse = function(req, res) {
     
      
 
-    console.log("1 " + newCourses);
     newCourses.push(course);
-    console.log("2 " + newCourses);
 
     userModel.update({email: req.session.email}, {
         courses: newCourses,
