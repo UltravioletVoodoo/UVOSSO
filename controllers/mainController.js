@@ -12,13 +12,20 @@ module.exports = function(req, res) {
 
         courseModel.find({}).exec(function (error, response){
 
-            courses = []
+            userModel.find({email: req.session.email}).exec(function (err, resp){
 
-            for(course in response){
-                courses.push(String('\"' + response[course].name + '\"'));
-            }
-            res.send(mainPage({courses}));
-            
+                for(x in resp){
+                    userCourses = resp[x].courses;
+                }  
+
+                courses = []
+
+                for(course in response){
+                    courses.push(String('\"' + response[course].name + '\"'));
+                }
+                res.send(mainPage({courses, userCourses}));
+                
+        });
         });
         return;
     };
@@ -35,5 +42,38 @@ module.exports.addCourse = function(req, res) {
         //Gonna do this one with eric I think
     
     console.log("Attempting to add " + course + " to the user with email: " + req.session.email);
+
+    //modify the current user, to contain the course
+
+    newCourses = []
+
+    userModel.find({email: req.session.email}).exec(function (error, response){
+
+        
+
+        for(x in response){
+            console.log(response[x].courses);
+            newCourses = newCourses.concat(response[x].courses);
+        }    
+    
+     
+
+    console.log("1 " + newCourses);
+    newCourses.push(course);
+    console.log("2 " + newCourses);
+
+    userModel.update({email: req.session.email}, {
+        courses: newCourses,
+    },  function (err, numberAffected, rawResponse){
+    });
+
+    });
+
+   
+
+
+    res.redirect('/home');
+
+    return;
 
 }

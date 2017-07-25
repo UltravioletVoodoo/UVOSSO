@@ -67,6 +67,7 @@ module.exports.createUser = function(req, res) {
         const user = new userModel({
             email: email,
             password: password1,
+            courses: [],
         });
 
         user.save(function (err) {
