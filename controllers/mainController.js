@@ -4,26 +4,25 @@ const errorView = require('../views/error');
 const courseModel = require('../models/courseModel.js');
 const userModel = require('../models/userModel');
 
+const list = require('../views/util/list');
+
+
 
 //Load the main page
 module.exports = function(req, res) {
 
     if(req.session.email){
 
-        courseModel.find({}).exec(function (error, response){
+        courseModel.find({}).exec(function (error, courses){
+        userModel.find({email: req.session.email}).exec(function (err, users){
 
-            userModel.find({email: req.session.email}).exec(function (err, resp){
+            var [{courses : userCourses}] = users;
 
-                for(x in resp){
-                    userCourses = resp[x].courses;
-                }  
+            courses = courses.map(function(row) {
+                return row.name;
+            });
 
-                courses = []
-
-                for(course in response){
-                    courses.push(String('\"' + response[course].name + '\"'));
-                }
-                res.send(mainPage({courses, userCourses}));
+            res.send(mainPage({courses, userCourses}));
                 
         });
         });
@@ -33,15 +32,17 @@ module.exports = function(req, res) {
 };
 
 
-//Adds a course to a user
+//Adds a course to a user <-- THIS REQUIRES REFACTORING WITH ERIC -->
 module.exports.addCourse = function(req, res) {
 
-    const course = req.sanitize('course').escape();
+    const course = req.sanitize('course').escape().toUpperCase();
 
     var errors = [];
 
-    //Make sure that the course isnt already associated with the user
-    
+    //Validation steps
+
+        //Make sure that the course isnt already associated with the user
+        //Make sure that the course they entered exists on the course list
 
     
     
@@ -49,33 +50,64 @@ module.exports.addCourse = function(req, res) {
 
     //modify the current user, to contain the course
 
-    newCourses = []
+    courseModel.find({}).exec(function(courseError, allCourses) {
+    userModel.find({email: req.session.email}).exec(function (userError, users) {
 
-    userModel.find({email: req.session.email}).exec(function (error, response){
+        if(courseError) {
+            // handle the case that the database can't get the courses
+            errors.push("Database was unable to find the course list");
+        }
+        if(userError) {
+            // handle the case that the database can't get the user
+            errors.push("Database could not find the user");
+        }
 
+        // validate that course is in allCourses
+        var validCourse = false;
+        for(x of allCourses){
+            if (x.name === course){
+                validCourse = true;
+            }
+        }
+        if(!validCourse){
+            errors.push("The course you added is invallid, please choose from the drop down list");
+        }
+
+        var [{courses : userCourses}] = users;
+        /*
+        for(x of users) {
+            console.log(x.courses);
+            userCourses = x.courses;
+        }
+        */
         
-
-        for(x in response){
-            console.log(response[x].courses);
-            newCourses = newCourses.concat(response[x].courses);
-        }    
+        // validate that course is NOT in userCourses
+        for (x of userCourses){
+            if (x === course){
+                errors.push("Course is already associated with your account");
+            }
+        }
     
-     
 
-    newCourses.push(course);
+        if (errors.length > 0){
+            courses = allCourses.map(function(row) {
+                return row.name;
+            });
+            res.send(mainPage({
+                userCourses,
+                courses,
+                error: list(errors),
+            }));
+            return;
+        }
+        userCourses.push(course);
+        userModel.update({email: req.session.email}, { courses: userCourses },  function (error, numberAffected, rawResponse) {
+            if(error) {
+                // handle case where database was unable to update user
+            }
+            res.redirect('/home');
+        });
 
-    userModel.update({email: req.session.email}, {
-        courses: newCourses,
-    },  function (err, numberAffected, rawResponse){
-    });
-
-    });
-
-   
-
-
-    res.redirect('/home');
-
-    return;
+    });});
 
 }

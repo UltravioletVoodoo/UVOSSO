@@ -1,6 +1,10 @@
 const base = require("./base");
 
-module.exports = function(context) {
+module.exports = function(context={}) {
+
+    //making sure the error isnt undefined
+    context.error = context.error || '';
+
     return base({
         title: 'Home',
         content: `
@@ -25,7 +29,7 @@ module.exports = function(context) {
             <!-- Javascript -->
             <script>
                 $(function() {
-                    var availableCourses  =  [${context.courses}];
+                    var availableCourses  =  ${JSON.stringify(context.courses)};
                     $( "#automplete-1" ).autocomplete({
                     source: availableCourses
                     });
@@ -45,6 +49,9 @@ module.exports = function(context) {
                 </form>
 
                 <p>${context.userCourses}</p>
+
+                <p>${context.error}</p>
+
             </body>
         </html>
 
