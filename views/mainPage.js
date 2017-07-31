@@ -53,7 +53,6 @@ module.exports = function(context={}) {
                 <script>
                     for(x of ${JSON.stringify(context.userCourses)}){
                         console.log(x);
-                        <p>x</p>
                     };
                 </script>
 
