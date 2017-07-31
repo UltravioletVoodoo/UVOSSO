@@ -32,7 +32,7 @@ module.exports = function(req, res) {
 };
 
 
-//Adds a course to a user <-- THIS REQUIRES REFACTORING WITH ERIC -->
+//Adds a course to a user
 module.exports.addCourse = function(req, res) {
 
     const course = req.sanitize('course').escape().toUpperCase();
@@ -109,5 +109,15 @@ module.exports.addCourse = function(req, res) {
         });
 
     });});
+
+}
+
+module.exports.deleteCourse = function(req, res) {
+
+    const course = req.sanitize('course').escape();
+
+    console.log("Deleting " + course + " from user with email: " + req.session.email);
+
+    res.redirect('/home');
 
 }

@@ -48,8 +48,16 @@ module.exports = function(context={}) {
                 <input type="submit" value="add">
                 </form>
 
-                <p>${context.userCourses}</p>
 
+                <!-- Courses -->
+                <script>
+                    for(x of ${JSON.stringify(context.userCourses)}){
+                        console.log(x);
+                        <p>x</p>
+                    };
+                </script>
+
+                <!-- Submission Errors -->
                 <p>${context.error}</p>
 
             </body>
