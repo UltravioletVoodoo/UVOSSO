@@ -50,6 +50,7 @@ module.exports = function(context={}) {
 
 
                 <!-- Courses -->
+                <p>${context.userCourses}</p>
                 <script>
                     for(x of ${JSON.stringify(context.userCourses)}){
                         console.log(x);
