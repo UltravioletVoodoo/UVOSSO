@@ -5,10 +5,14 @@ module.exports = function(context={}) {
     //making sure the error isnt undefined
     context.error = context.error || '';
 
-    var tempCourseThing = "";
+    var coursesHTML = "";
 
     for(x of context.userCourses){
-        tempCourseThing += `<div>${x}</div>`
+        coursesHTML += `
+        <div id="${x}">
+        <h3>${x}</h3>
+        <input type="button" value="delete" onclick="location.href='/home/deleteCourse'">
+        </div>`
     };
 
     return base({
@@ -56,13 +60,7 @@ module.exports = function(context={}) {
 
 
                 <!-- Courses -->
-                ${tempCourseThing}
-
-                <script>
-                    for(x of ${JSON.stringify(context.userCourses)}){
-                        console.log(x);
-                    };
-                </script>
+                ${coursesHTML}
 
                 <!-- Submission Errors -->
                 <p>${context.error}</p>
