@@ -24,7 +24,7 @@ module.exports.login = function(req, res) {
         if(!exists){
             //run error
             res.send(loginPage({
-                error: 'Invallid Email/Password',
+                error: 'Invalid Email/Password',
             }));
             return;
         }

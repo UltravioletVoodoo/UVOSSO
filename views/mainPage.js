@@ -5,6 +5,12 @@ module.exports = function(context={}) {
     //making sure the error isnt undefined
     context.error = context.error || '';
 
+    var tempCourseThing = "";
+
+    for(x of context.userCourses){
+        tempCourseThing += `<div>${x}</div>`
+    };
+
     return base({
         title: 'Home',
         content: `
@@ -50,7 +56,8 @@ module.exports = function(context={}) {
 
 
                 <!-- Courses -->
-                <p>${context.userCourses}</p>
+                ${tempCourseThing}
+
                 <script>
                     for(x of ${JSON.stringify(context.userCourses)}){
                         console.log(x);

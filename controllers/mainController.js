@@ -70,7 +70,7 @@ module.exports.addCourse = function(req, res) {
             }
         }
         if(!validCourse){
-            errors.push("The course you added is invallid, please choose from the drop down list");
+            errors.push("The course you added is invalid, please choose from the drop down list");
         }
 
         var [{courses : userCourses}] = users;
