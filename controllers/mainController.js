@@ -18,11 +18,11 @@ module.exports = function(req, res) {
 
             var [{courses : userCourses}] = users;
 
-            courses = courses.map(function(row) {
+            courseNames = courses.map(function(row) {
                 return row.name;
             });
 
-            res.send(mainPage({courses, userCourses}));
+            res.send(mainPage({courseNames, courses, userCourses}));
                 
         });
         });

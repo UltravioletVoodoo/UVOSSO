@@ -1,5 +1,7 @@
 const base = require("./base");
 
+const dateFormat = require("dateformat");
+
 module.exports = function(context={}) {
 
     //making sure the error isnt undefined
@@ -7,7 +9,29 @@ module.exports = function(context={}) {
 
     var coursesHTML = "";
 
+    var relevantCourses = {};
+
+    for (course of context.courses){
+        if(context.userCourses.includes(course.name)){
+            relevantCourses[course.name] = course.deliverables;
+        }
+    }
+
+
     for(x of context.userCourses){
+
+        var deliverables = {
+            Assignment: [],
+            Quiz: [],
+            Midterm: [],
+            Final: [],
+            Misc: [],
+        };
+
+        for(deliverable of relevantCourses[x]){
+            deliverables[deliverable.type].push(deliverable.name + " " + "[" + dateFormat(deliverable.dueDate, "dddd, mmm dS, yyyy") + "]");
+        }
+
         coursesHTML += `
         <div id="${x}">
         <h3>${x}</h3>
@@ -15,6 +39,18 @@ module.exports = function(context={}) {
             <input type="hidden" value="${x}" name="course">
         <input type="submit" value="Delete">
         </form>
+
+        <p><b>Assignments:</b> ${deliverables.Assignment.join(", ")}</p>
+        <p><b>Quizzes:</b> ${deliverables.Quiz.join(", ")}</p>
+        <p><b>Midterms:</b> ${deliverables.Midterm.join(", ")}</p>
+        <p><b>Finals:</b> ${deliverables.Final.join(", ")}</p>
+        <p><b>Misc:</b> ${deliverables.Misc.join(", ")}</p>
+
+        <hr>
+
+
+
+
         </div>`
     };
 
@@ -42,7 +78,7 @@ module.exports = function(context={}) {
             <!-- Javascript -->
             <script>
                 $(function() {
-                    var availableCourses  =  ${JSON.stringify(context.courses)};
+                    var availableCourses  =  ${JSON.stringify(context.courseNames)};
                     $( "#automplete-1" ).autocomplete({
                     source: availableCourses
                     });
