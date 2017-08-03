@@ -118,6 +118,19 @@ module.exports.deleteCourse = function(req, res) {
 
     console.log("Deleting " + course + " from user with email: " + req.session.email);
 
-    res.redirect('/home');
+    userModel.find({email: req.session.email}).exec(function (userError, users) {
+
+        var [{courses : userCourses}] = users;
+
+        userCourses = userCourses.filter(function(c){
+            return c !== course;
+        });
+
+
+
+    userModel.update({email: req.session.email}, { courses: userCourses },  function (error, numberAffected, rawResponse) {
+        res.redirect('/home');
+    });
+    });
 
 }

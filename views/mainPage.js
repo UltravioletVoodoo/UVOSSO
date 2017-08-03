@@ -11,7 +11,10 @@ module.exports = function(context={}) {
         coursesHTML += `
         <div id="${x}">
         <h3>${x}</h3>
-        <input type="button" value="Delete" onclick="location.href='/home/deleteCourse'">
+        <form action="/home/deleteCourse" method="post">
+            <input type="hidden" value="${x}" name="course">
+        <input type="submit" value="Delete">
+        </form>
         </div>`
     };
 
