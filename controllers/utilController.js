@@ -58,7 +58,7 @@ function generateDeliverables(){
 }
 
 function generateAssignments(){
-    var num = getRandomInt(2,4);
+    var num = getRandomInt(40,60);
     var Assignments = [];
 
     for (var i = 0; i < num; i++){
@@ -72,7 +72,7 @@ function generateAssignments(){
 }
 
 function generateQuizzes(){
-    var num = getRandomInt(0,3);
+    var num = getRandomInt(30,60);
     var Quizzes = [];
 
     for (var i = 0; i < num; i++){
@@ -86,7 +86,7 @@ function generateQuizzes(){
 }
 
 function generateMidterms(){
-    var num = getRandomInt(1,2);
+    var num = getRandomInt(6,9);
     var Midterms = [];
 
     for (var i = 0; i < num; i++){
@@ -100,7 +100,7 @@ function generateMidterms(){
 }
 
 function generateFinals(){
-    var num = getRandomInt(1,1);
+    var num = getRandomInt(3,3);
     var Finals = [];
 
     for (var i = 0; i < num; i++){
@@ -114,7 +114,7 @@ function generateFinals(){
 }
 
 function generateMisc(){
-    var num = getRandomInt(0,2);
+    var num = getRandomInt(3,3);
     var Misc = [];
 
     for (var i = 0; i < num; i++){
