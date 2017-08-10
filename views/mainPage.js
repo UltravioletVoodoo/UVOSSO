@@ -17,7 +17,18 @@ module.exports = function(context={}) {
         }
     }
 
+    var eventColors = [
+        '#1dd8fc',
+        '#e70d08',
+        '#6e55d6',
+        '#40d253',
+        '#024d96',
+        '#a82e07',
+        '#d4a6fb',
+    ];
+
     var calendarEvents = [];
+    var i = 0;
 
     for(x of context.userCourses){
 
@@ -37,14 +48,14 @@ module.exports = function(context={}) {
         for(deliverable of relevantCourses[x]){
             
             if(deliverable.dueDate >= firstDay && deliverable.dueDate <= lastDay){
-            calendarEvents.push({title: x + '\n' + deliverable.name, start : deliverable.dueDate});
+            calendarEvents.push({title: x + '\n' + deliverable.name, start : deliverable.dueDate, color: eventColors[i]});
             deliverables[deliverable.type].push(deliverable.name + " " + "[" + dateFormat(deliverable.dueDate, "dddd, mmm dS, yyyy") + "]");
             }
         }
 
         coursesHTML += `
         <div id="${x}">
-        <h3>${x}</h3>
+        <h3 style="color:${eventColors[i]}">${x}</h3>
         <form action="/home/deleteCourse" method="post">
             <input type="hidden" value="${x}" name="course">
         <input type="submit" value="Delete">
@@ -62,6 +73,7 @@ module.exports = function(context={}) {
 
 
         </div>`
+        i = (i+1) % eventColors.length;
     };
 
     return base({
