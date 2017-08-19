@@ -13,16 +13,16 @@ module.exports = function(req, res) {
 
     if(req.session.email){
 
-        courseModel.find({}).exec(function (error, courses){
+        courseModel.find({}).exec(function (error, allCourses){
         userModel.find({email: req.session.email}).exec(function (err, users){
 
-            var [{courses : userCourses}] = users;
+            var [{allCourses : userCourses}] = users;
 
-            courseNames = courses.map(function(row) {
+            courseNames = allCourses.map(function(row) {
                 return row.name;
             });
 
-            res.send(mainPage({courseNames, courses, userCourses}));
+            res.send(mainPage({courseNames, allCourses, userCourses}));
                 
         });
         });
@@ -96,6 +96,7 @@ module.exports.addCourse = function(req, res) {
             res.send(mainPage({
                 userCourses,
                 courseNames,
+                allCourses,
                 error: list(errors),
             }));
             return;
