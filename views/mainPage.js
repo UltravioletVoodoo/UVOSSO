@@ -116,7 +116,7 @@ module.exports = function(context={}) {
 
         <!-- ADD COURSE -->
         <form class ="ui-widget" action="/home/addCourse" method="post">
-            <label for ="automplete-1">Tags: </label>
+            <label for ="automplete-1">Type course name to add: </label>
             <input id ="automplete-1" name="course">
         <input type="submit" value="add">
         </form>
