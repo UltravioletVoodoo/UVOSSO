@@ -90,12 +90,12 @@ module.exports.addCourse = function(req, res) {
     
 
         if (errors.length > 0){
-            courses = allCourses.map(function(row) {
+            courseNames = allCourses.map(function(row) {
                 return row.name;
             });
             res.send(mainPage({
                 userCourses,
-                courses,
+                courseNames,
                 error: list(errors),
             }));
             return;

@@ -11,7 +11,7 @@ module.exports = function(context={}) {
 
     var relevantCourses = {};
 
-    for (course of context.courses){
+    for (course of context.courseNames){
         if(context.userCourses.includes(course.name)){
             relevantCourses[course.name] = course.deliverables;
         }
@@ -45,7 +45,7 @@ module.exports = function(context={}) {
         var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
         var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
-        for(deliverable of relevantCourses[x]){
+        for(deliverable of context.userCourses){
             
             if(deliverable.dueDate >= firstDay && deliverable.dueDate <= lastDay){
             calendarEvents.push({title: x + '\n' + deliverable.name, start : deliverable.dueDate, color: eventColors[i]});
