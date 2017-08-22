@@ -9,20 +9,20 @@ module.exports = function(context={}) {
         title: 'Login Page',
         content: `
         
-        <h1>LOGIN PAGE</h1>
+        <div id="div_login_page">
+            <h1>UVOSSO</h1>
 
-        <form action ="/login/login" method="post">
-            <label for="email">Email: </label>
+            <form action ="/login/login" method="post">
                 <input id="email" type="text" name="email" placeholder="Enter email here">
-            <label for="password">Password: </label>
                 <input id="password" type="password" name="password" placeholder="Enter password here">
-            <input type="submit" value="OK">
-        </form>
+                <input type="submit" value="OK">
+            </form>
 
-        <p>${context.error}</p>
+            <p>${context.error}</p>
 
-        <p>Don't have an account? Register <a href='/register'>here</a></p>
+            <p>Don't have an account? Register <a href='/register'>here</a></p>
 
+        </div>
         `
     })
 }

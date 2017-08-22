@@ -3,6 +3,14 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+#div_login_page, #div_registration_page {
+    text-align: center;
+}
+
+form {
+    display: inline-grid;
+}
+
 a {
   color: #00B7FF;
 }
