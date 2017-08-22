@@ -12,6 +12,11 @@ form {
     display: inline-grid;
 }
 
+#calendar {
+    width: 50%;
+    margin: auto;
+}
+
 a {
   color: #00B7FF;
 }

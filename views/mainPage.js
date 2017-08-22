@@ -31,9 +31,9 @@ module.exports = function(context={}) {
     var calendarEvents = [];
     
 
-    
-    for(var i = 0; i < context.userCourses.length; i++){
-        var x = context.userCourses[i];
+    var i = 0;
+    for(var y = 0; i < context.userCourses.length; y++){
+        var x = context.userCourses[y];
 
         var deliverables = {
             Assignment: [],
@@ -124,12 +124,11 @@ module.exports = function(context={}) {
         <input type="submit" value="add">
         </form>
 
+        <!-- Submission Errors -->
+        <p>${context.error}</p>
 
         <!-- Courses -->
         ${coursesHTML}
-
-        <!-- Submission Errors -->
-        <p>${context.error}</p>
 
 
         `

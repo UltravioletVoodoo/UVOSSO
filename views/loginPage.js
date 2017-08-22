@@ -18,7 +18,7 @@ module.exports = function(context={}) {
             <form action ="/login/login" method="post">
                 <input id="email" type="text" name="email" placeholder="Enter email here">
                 <input id="password" type="password" name="password" placeholder="Enter password here">
-                <input type="submit" value="OK">
+                <input type="submit" value="Login">
             </form>
 
             <br>
