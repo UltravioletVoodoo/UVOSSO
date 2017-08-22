@@ -10,7 +10,10 @@ module.exports = function(context={}) {
         content: `
         
         <div id="div_login_page">
-            <h1>UVOSSO</h1>
+
+            <img id="UVOSSO_logo" alt="UVOSSO LOGO" src="/images/Logo.png">
+
+            <br>
 
             <form action ="/login/login" method="post">
                 <input id="email" type="text" name="email" placeholder="Enter email here">
@@ -18,9 +21,15 @@ module.exports = function(context={}) {
                 <input type="submit" value="OK">
             </form>
 
+            <br>
+
             <p>${context.error}</p>
 
+            <br>
+
             <p>Don't have an account? Register <a href='/register'>here</a></p>
+
+            <br>
 
         </div>
         `
