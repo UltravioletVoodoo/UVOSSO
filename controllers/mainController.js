@@ -16,12 +16,23 @@ module.exports = function(req, res) {
         courseModel.find({}).exec(function (error, allCourses){
         userModel.find({email: req.session.email}).exec(function (err, users){
 
-            var [{allCourses : userCourses}] = users;
+
+            console.log('Users : ' + users);
+
+            //var [{allCourses : userCourses}] = users;
+
+            var userCourses = [];
+            if(users.length == 1){
+                userCourses = users[0].courses;
+            }else{
+                console.log("There was a validation error. There should not be more than one user with the email " + req.session.email);
+            }
 
             courseNames = allCourses.map(function(row) {
                 return row.name;
             });
 
+            console.log('User courses are: ' + userCourses);
             res.send(mainPage({courseNames, allCourses, userCourses}));
                 
         });

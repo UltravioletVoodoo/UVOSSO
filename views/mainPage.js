@@ -11,11 +11,8 @@ module.exports = function(context={}) {
 
     var relevantCourses = {};
 
-    var i = 0;
 
     for (course of context.allCourses){
-        console.log("The course name is: " + course.name);
-        console.log("The value of userCourses is: " + context.userCourses);
         if(context.userCourses.includes(course.name)){
             relevantCourses[course.name] = course.deliverables;
         }
@@ -34,7 +31,9 @@ module.exports = function(context={}) {
     var calendarEvents = [];
     
 
-    for(x of context.userCourses){
+    
+    for(var i = 0; i < context.userCourses.length; i++){
+        var x = context.userCourses[i];
 
         var deliverables = {
             Assignment: [],
@@ -50,14 +49,19 @@ module.exports = function(context={}) {
         var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
         console.log(relevantCourses);
+        console.log('\n');
+        console.log(x);
+        console.log('\n');
+        console.log(typeof x);
+        console.log('\n');
+        console.log(relevantCourses[x]);
+        console.log('\n');
 
-        for(deliverable of relevantCourses[i]){
+        for(deliverable of relevantCourses[x]){
             
             if(deliverable.dueDate >= firstDay && deliverable.dueDate <= lastDay){
-            calendarEvents.push({title: x + '\n' + deliverable.name, start : deliverable.dueDate, color: eventColors[i]});
-            deliverables[deliverable.type].push(deliverable.name + " " + "[" + dateFormat(deliverable.dueDate, "dddd, mmm dS, yyyy") + "]");
-            }else{
-                console.log("There dont seem to be any deliverables in this month");
+                calendarEvents.push({title: x + '\n' + deliverable.name, start : deliverable.dueDate, color: eventColors[i]});
+                deliverables[deliverable.type].push(deliverable.name + " " + "[" + dateFormat(deliverable.dueDate, "dddd, mmm dS, yyyy") + "]");
             }
         }
 
