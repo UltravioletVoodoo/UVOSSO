@@ -21,10 +21,16 @@ module.exports = function(context) {
         <link  href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel ="stylesheet">
         <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         
-        
         </head>
 
     <body>
+        <!-- TOP BAR -->
+        <ul id="top_bar">
+            <img id="UVOSSO_logo" alt="UVOSSO LOGO" src="/images/Logo.png" width="50px" height="50px">
+            <div id="div_logout_button">
+                <input type="button" value="Log out" onclick="location.href='/login/logout'">            
+            </div>
+            </ul>
         ${context.content}
     </body>
   </html>

@@ -83,54 +83,54 @@ module.exports = function(context={}) {
         title: 'Home',
         content: `
 
-        <!-- Top Bar -->
-        <input type="button" value="Log out" onclick="location.href='/login/logout'">
+        <div id="div_main_page">
 
-        
-        <!-- Javascript -->
-        <script>
-            $(function() {
-                var availableCourses  =  ${JSON.stringify(context.courseNames)};
-                $( "#automplete-1" ).autocomplete({
-                source: availableCourses
+
+
+            <!-- Javascript -->
+            <script>
+                $(function() {
+                    var availableCourses  =  ${JSON.stringify(context.courseNames)};
+                    $( "#automplete-1" ).autocomplete({
+                    source: availableCourses
+                    });
                 });
-            });
 
 
-            $(document).ready(function() {
+                $(document).ready(function() {
 
-                // page is now ready, initialize the calendar...
+                    // page is now ready, initialize the calendar...
 
-                $('#calendar').fullCalendar({
-                    // put your options and callbacks here
-                    events: ${JSON.stringify(calendarEvents)}
-                })
-            });
-
-
-
-        </script>
-        <!-- HTML --> 
+                    $('#calendar').fullCalendar({
+                        // put your options and callbacks here
+                        events: ${JSON.stringify(calendarEvents)}
+                    })
+                });
 
 
-        <!-- CALENDAR -->
-        <div id='calendar'></div>
+
+            </script>
+            <!-- HTML --> 
 
 
-        <!-- ADD COURSE -->
-        <form class ="ui-widget" action="/home/addCourse" method="post">
-            <label for ="automplete-1">Type course name to add: </label>
-            <input id ="automplete-1" name="course">
-        <input type="submit" value="add">
-        </form>
-
-        <!-- Submission Errors -->
-        <p>${context.error}</p>
-
-        <!-- Courses -->
-        ${coursesHTML}
+            <!-- CALENDAR -->
+            <div id='calendar'></div>
 
 
+            <!-- ADD COURSE -->
+            <form class ="ui-widget" action="/home/addCourse" method="post">
+                <label for ="automplete-1">Type course name to add: </label>
+                <input id ="automplete-1" name="course">
+            <input type="submit" value="add">
+            </form>
+
+            <!-- Submission Errors -->
+            <p>${context.error}</p>
+
+            <!-- Courses -->
+            ${coursesHTML}
+
+        </div>
         `
     })
 }

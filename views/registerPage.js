@@ -15,7 +15,7 @@ module.exports = function(context={}) {
             <input type="button" value="Back" onclick="location.href='/login'">
             
 
-            <form action="/register/createUser" method="post">
+            <form action="/register/createUser" id="div_registration_form" method="post">
                 <input id="email" type="text" name="email" placeholder="Enter email here">
                 <input id="password1" type="password" name="password1" placeholder="Enter password here">
                 <input id="password2" type="password" name="password2" placeholder="Re-enter password here">

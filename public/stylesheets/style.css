@@ -1,20 +1,39 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #E2FFDE;
 }
 
-#div_login_page, #div_registration_page {
+#div_login_page, #div_registration_page, #div_main_page {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     text-align: center;
 }
 
-form {
+.login, .register, #div_logout_button {
+    display: none;
+}
+
+#div_main_page {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    text-align: center;
+
+}
+
+#div_login_form, #div_registration_form {
     display: inline-grid;
 }
 
 #calendar {
     width: 50%;
     margin: auto;
+}
+
+#top_bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #3F9D45;
 }
 
 a {

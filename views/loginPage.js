@@ -15,7 +15,7 @@ module.exports = function(context={}) {
 
             <br>
 
-            <form action ="/login/login" method="post">
+            <form action ="/login/login" id="div_login_form" method="post">
                 <input id="email" type="text" name="email" placeholder="Enter email here">
                 <input id="password" type="password" name="password" placeholder="Enter password here">
                 <input type="submit" value="Login">
