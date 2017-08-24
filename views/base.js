@@ -30,6 +30,9 @@ module.exports = function(context) {
             <div id="div_logout_button">
                 <input type="button" value="Log out" onclick="location.href='/login/logout'">            
             </div>
+            <div id="div_back_button">
+                <input type="button" value="Back" onclick="location.href='/login'">                
+            </div>
             </ul>
         ${context.content}
     </body>

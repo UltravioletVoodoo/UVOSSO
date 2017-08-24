@@ -8,7 +8,7 @@ body {
     text-align: center;
 }
 
-.login, .register, #div_logout_button {
+#div_logout_button, #div_back_button {
     display: none;
 }
 

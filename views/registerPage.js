@@ -10,10 +10,7 @@ module.exports = function(context={}) {
         content: `
         
         <div id="div_registration_page">
-            <h1>Registration Page</h1>
-
-            <input type="button" value="Back" onclick="location.href='/login'">
-            
+            <h1>Registration Page</h1>            
 
             <form action="/register/createUser" id="div_registration_form" method="post">
                 <input id="email" type="text" name="email" placeholder="Enter email here">
