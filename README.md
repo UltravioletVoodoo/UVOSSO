@@ -1,6 +1,12 @@
 # UVOSSO
 Web app that I am making to fulfill my 1st UVic co-op requirement
 
+
+### Screenshots
+![](./public/images/UVOSSO_login_page_screenshot.png)
+![](./public/images/UVOSSO_main_page_screenshot.png)
+
+
 ### Dependencies
 
 In order to get UVOSSO up and running you will need the following dependencies
@@ -18,6 +24,10 @@ $ git clone https://www.github.com/UltravioletVoodoo/UVOSSO.git
 ```
 
 You will require credentials to complete the installation.
+
+## Installation step 2
+
+Go to the app.js file and modify line 25 following the instructions on the line above. In order to do this you will need to create a a free Mlab account to gain access to your database URI
 
 ### Running UVOSSO
 
