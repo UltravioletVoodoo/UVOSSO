@@ -3,8 +3,8 @@ Web app that I am making to fulfill my 1st UVic co-op requirement
 
 
 ### Screenshots
-![](public/images/UVOSSO_login_page_screenshot.png)
-![](public/images/UVOSSO_main_page_screenshot.png)
+![](https://rawgit.com/UltravioletVoodoo/UVOSSO/master/public/images/UVOSSO_login_page_screenshot.PNG)
+![](https://rawgit.com/UltravioletVoodoo/UVOSSO/master/public/images/UVOSSO_main_page_screenshot.PNG)
 
 
 ### Dependencies
