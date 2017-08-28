@@ -81,6 +81,7 @@ module.exports = function(context={}) {
 
     return base({
         title: 'Home',
+        logout_button: true,
         content: `
 
         <div id="div_main_page">

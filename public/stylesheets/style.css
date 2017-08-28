@@ -1,5 +1,6 @@
 body {
-  background-color: #E2FFDE;
+  background-color: #A9BDFF;
+  margin: 0;
 }
 
 #div_login_page, #div_registration_page, #div_main_page {
@@ -9,7 +10,7 @@ body {
 }
 
 #div_logout_button, #div_back_button {
-    display: none;
+    display: inline-block;
 }
 
 #div_login_form, #div_registration_form {
@@ -26,9 +27,13 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #3F9D45;
+    background-color: #2626E9;
+}
+
+#top_bar img {
+    margin: 6px;
 }
 
 a {
-  color: #00B7FF;
+  color: #2626E9;
 }

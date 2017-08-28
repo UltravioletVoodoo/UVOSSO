@@ -1,5 +1,5 @@
 module.exports = function(context) {
-  return `
+  var html =  `
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -27,15 +27,30 @@ module.exports = function(context) {
         <!-- TOP BAR -->
         <ul id="top_bar">
             <img id="UVOSSO_logo" alt="UVOSSO LOGO" src="/images/Logo.png" width="50px" height="50px">
-            <div id="div_logout_button">
+            
+            `
+            if(context.logout_button){
+                html += `<div id="div_logout_button">
                 <input type="button" value="Log out" onclick="location.href='/login/logout'">            
             </div>
-            <div id="div_back_button">
+            `
+            }
+
+
+            if(context.back_button){
+                html += `<div id="div_back_button">
                 <input type="button" value="Back" onclick="location.href='/login'">                
             </div>
+            `
+            }
+
+            html += `
             </ul>
         ${context.content}
     </body>
   </html>
   `
+
+
+  return html;
 }
